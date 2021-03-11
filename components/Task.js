@@ -1,10 +1,13 @@
 import { FaTimes } from 'react-icons/fa' // imports the x icon from font awesome
 
 const Task = ({ task, onDelete, onToggle }) => {
+            //
     return (
-        <div className='task' onDoubleClick={() => onToggle(task.id)}>
-            <h3>
-                {task.text} {' '}
+        <div
+        className={'task ' + (task.reminder ? 'reminder':'')}
+            onClick={() => onToggle(task.id, task.reminder)}>
+            <h3 className='reminder'>
+                {task.text} {''}
                 <FaTimes
                     style={{ color: 'red', cursor: 'pointer' }}
                     onClick={() => onDelete(task.id)}
